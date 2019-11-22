@@ -1,0 +1,79 @@
+TESTCASE SampleTest
+*-----------------------------------------------------------------------------
+* @author     :  
+*-----------------------------------------------------------------------------
+*
+*   Modification History :
+*
+*
+*-----------------------------------------------------------------------------
+*** <region = Header>
+*** <desc> </desc>
+
+    UTF.setTarget("RoutineName")                    ;* Name of the Target routine for which test is done
+    UTF.setDescription("Test the Chennai's routes") ;* Default description for all tests
+    GOSUB runtest1                                  ;* Meaningful description for testcase 1
+*    GOSUB runtest2                                  ;* Meaningful description for testcase 2
+*
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+*** <region name= testcase1>
+*** <desc> description of testcase1</desc>
+
+runtest1:
+
+    UTF.reset() ;* Reset all
+
+    GOSUB setSharedDetails ;*Commons if any required for all test cases
+    GOSUB setSharedStubs ;*Stubs if any required for all test cases
+* set data for this test
+* set stubs for this test
+* addParameter
+     UTF.runTest("Test the route from Airport to Sterling Office")
+* doAssertions for this testcase
+
+*
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+*** <region name= testcase2>
+*** <desc> description of testcase2</desc>
+
+runtest2:
+
+    UTF.reset()
+   GOSUB setSharedDetails
+    GOSUB setSharedStubs
+* set data for this test
+* set stubs for this test
+* addParameter
+    UTF.runTest("Test the route from Airport to KG Office")
+* doAssertions for this testcase
+*
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+*** <region name= Stub methods common for all test cases>
+*** <desc> </desc>
+setSharedStubs:
+
+* STUB = UTF.addStub("MY.STUBED CALL")
+* UTF.addStubParam(STUB, "20150903", "September 3rd 2015")
+* UTF.addStubParam(STUB, UTF.matches("2N"), UTF.same())
+
+    RETURN
+
+*** </region>
+*-----------------------------------------------------------------------------
+*** <region name= Set details common for all test cases>
+*** <desc> </desc>
+setSharedDetails:
+
+* UTF.setRecord("F.MY.TABLE", "MY.KEY.1", 'Field1' : @FM : "Field2")
+* CachePut("MY.BUCKET", "KEY1", "Initial value")
+
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+END

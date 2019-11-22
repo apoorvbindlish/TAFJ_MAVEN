@@ -1,0 +1,128 @@
+TESTCASE SetCustomerLanguageTest
+*-----------------------------------------------------------------------------
+* @author     :  
+*-----------------------------------------------------------------------------
+*
+*   Modification History :
+*
+*
+*-----------------------------------------------------------------------------
+*** <region = Header>
+*** <desc> </desc>
+
+    UTF.setTarget("SET.CUSTOMER.LANG")                    ;* Name of the Target routine for which test is done
+    
+    sectorIndex = 1
+
+    GOSUB testSector1001                                  
+    GOSUB testSector1002                                  
+    GOSUB testSector1003                                  
+    GOSUB testOtherSectors                                    
+*
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+*** <region name= testcase1>
+*** <desc> description of testcase1</desc>
+
+testSector1001:
+
+    UTF.reset() ;* Reset all
+    UTF.setDescription("Sector 1001 with French lang")
+    
+    UTF.setParam(sectorIndex, "1001")
+
+    NEW.LANG = ""
+    UTF.addParam(NEW.LANG)
+    
+    RESULT = UTF.runTest()
+
+    UTF.assertEquals(NEW.LANG, "FR")
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+*** <region name= testcase2>
+*** <desc> description of testcase2</desc>
+
+testSector1002:
+
+    * PRINT "Testing Sector 1002"
+    UTF.reset() ;* Reset all
+    UTF.setDescription("Sector 1002 with Germany lang")
+        
+    UTF.setParam(sectorIndex, "1002")
+    NEW.LANG = ""
+    UTF.addParam(NEW.LANG)
+    
+    RESULT = UTF.runTest()
+
+    UTF.assertEquals(NEW.LANG, "DE")
+
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+*** <region name= testcase2>
+*** <desc> description of testcase2</desc>
+
+testSector1003:
+
+    UTF.reset() ;* Reset all
+    UTF.setDescription("Sector 1003 with Polish lang")
+        
+    UTF.setParam(sectorIndex, "1003")    
+    NEW.LANG = ""
+    UTF.addParam(NEW.LANG)
+    
+    RESULT = UTF.runTest()
+
+    UTF.assertEquals(NEW.LANG, "PL")
+
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+*** <region name= testcase2>
+*** <desc> description of testcase2</desc>
+
+testOtherSectors:
+
+    UTF.reset() ;* Reset all
+    UTF.setDescription("Other Sector with default lang")
+    
+    UTF.setParam(sectorIndex, "1014")
+    NEW.LANG = ""
+    UTF.addParam(NEW.LANG)
+    
+    RESULT = UTF.runTest()
+
+    UTF.assertNotEquals(NEW.LANG, "AR")
+    RETURN
+
+*** </region>
+
+
+*-----------------------------------------------------------------------------
+*** <region name= Stub methods common for all test cases>
+*** <desc> </desc>
+setSharedStubs:
+
+* STUB = UTF.addStub("MY.STUBED CALL")
+* UTF.addStubParam(STUB, "20150903", "September 3rd 2015")
+* UTF.addStubParam(STUB, UTF.matches("2N"), UTF.same())
+
+    RETURN
+
+*** </region>
+*-----------------------------------------------------------------------------
+*** <region name= Set details common for all test cases>
+*** <desc> </desc>
+setSharedDetails:
+
+* UTF.setRecord("F.MY.TABLE", "MY.KEY.1", 'Field1' : @FM : "Field2")
+* CachePut("MY.BUCKET", "KEY1", "Initial value")
+
+
+
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+END
