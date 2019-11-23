@@ -15,7 +15,7 @@
 	     </exec>
 	</target>
     
-    <target name="run" depends="compile" description="Run the UnitTests ">
+    <target name="test" depends="compile" description="Run the UnitTests ">
 	    <echo message="Starting to run the T24 Unit Tests..."/>
         <exec dir="${tafj.home.path}" executable="cmd" failonerror="true">
             <arg line="/c trun.bat -test ${basedir}\Test\UnitTests"/>
@@ -23,5 +23,5 @@
     </target>
 
 	<!-- Default, run this -->
-	<target name="main" depends="compile, run" />
+	<target name="main" depends="compile, test" />
 </project>
