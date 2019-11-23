@@ -9,6 +9,7 @@ TESTCASE SetCustomerLanguageTest
 *-----------------------------------------------------------------------------
 *** <region = Header>
 *** <desc> </desc>
+    PRINT "Starting Unit Tests for Sector"
 
     UTF.setTarget("SET.CUSTOMER.LANG")                    ;* Name of the Target routine for which test is done
     
@@ -19,6 +20,7 @@ TESTCASE SetCustomerLanguageTest
     GOSUB testSector1003                                  
     GOSUB testOtherSectors                                    
 *
+    PRINT "Finished Unit Tests for Sector"
     RETURN
 *** </region>
 *-----------------------------------------------------------------------------
@@ -27,6 +29,7 @@ TESTCASE SetCustomerLanguageTest
 
 testSector1001:
 
+    PRINT "Running Test for Sector 1001"
     UTF.reset() ;* Reset all
     UTF.setDescription("Sector 1001 with French lang")
     
@@ -38,6 +41,7 @@ testSector1001:
     RESULT = UTF.runTest()
 
     UTF.assertEquals(NEW.LANG, "FR")
+    PRINT "Completed Test for Sector 1001"
     RETURN
 *** </region>
 *-----------------------------------------------------------------------------
@@ -46,7 +50,7 @@ testSector1001:
 
 testSector1002:
 
-    * PRINT "Testing Sector 1002"
+    PRINT "Running Test for Sector 1002"
     UTF.reset() ;* Reset all
     UTF.setDescription("Sector 1002 with Germany lang")
         
@@ -57,6 +61,8 @@ testSector1002:
     RESULT = UTF.runTest()
 
     UTF.assertEquals(NEW.LANG, "DE")
+    
+    PRINT "Completed Test for Sector 1002"
 
     RETURN
 *** </region>
@@ -66,6 +72,7 @@ testSector1002:
 
 testSector1003:
 
+    PRINT "Running Test for Sector 1003"
     UTF.reset() ;* Reset all
     UTF.setDescription("Sector 1003 with Polish lang")
         
@@ -76,6 +83,7 @@ testSector1003:
     RESULT = UTF.runTest()
 
     UTF.assertEquals(NEW.LANG, "PL")
+    PRINT "Completed Test for Sector 1003"
 
     RETURN
 *** </region>
@@ -85,6 +93,7 @@ testSector1003:
 
 testOtherSectors:
 
+    PRINT "Running Test for Other Sectors"
     UTF.reset() ;* Reset all
     UTF.setDescription("Other Sector with default lang")
     
@@ -94,7 +103,9 @@ testOtherSectors:
     
     RESULT = UTF.runTest()
 
-    UTF.assertNotEquals(NEW.LANG, "AR")
+    UTF.assertNotEquals(NEW.LANG, "PL")
+    PRINT "Completed Test for Other Sectors"
+    
     RETURN
 
 *** </region>
