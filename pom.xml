@@ -49,7 +49,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             	<phase>test</phase>
             <configuration>
                 <target>
-                 <exec dir="${tafj.home.path}" executable="cmd" os="Windows 10" failonerror="true">
+                 <exec dir="${tafj.home.path}" executable="cmd" os="windows" failonerror="true">
 		            <arg line="/c trun.bat -test ${project.basedir}\ST_Customer\Test\UnitTests"/>
 		        </exec>
               </target>
