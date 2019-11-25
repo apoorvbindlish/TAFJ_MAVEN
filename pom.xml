@@ -37,7 +37,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
                 <phase>compile</phase>
                 <configuration>
                 <tasks>
-                    <ant antfile="build.xml" target="compile" />
+                    <ant antfile=".\\build.xml" target="compile" />
                 </tasks>
                 </configuration>
                 <goals>
