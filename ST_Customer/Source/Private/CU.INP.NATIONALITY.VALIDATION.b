@@ -13,11 +13,17 @@ SUBROUTINE CU.INP.NATIONALITY.VALIDATION
 	ETEXT = ''
 	E=''
 	ERR=''
+	V$ERROR=@FALSE
+	
     CUS.NATIONALITY=R.NEW(EB.CUS.NATIONALITY)
-    IF CUS.NATIONALITY NE 'US' AND  CUS.NATIONALITY NE 'UK' THEN
-	    AF = EB.CUS.NATIONALITY
-        ETEXT='Invalid Nationality chosen. Only US or UK allowed'
+    IF COMI NE 'SG' AND COMI NE 'IN' AND AF = EB.CUS.NATIONALITY THEN
+	E='Invalid Nationality chosen. SG or IN allowed'
+        ETEXT='Invalid Nationality chosen. Only SG or IN allowed'
+	V$ERROR=@TRUE
         CALL STORE.END.ERROR
+	ETEXT = ''
+	E=''
+	ERR=''
     END
     RETURN
 
