@@ -1,27 +1,37 @@
 <project name="T24CI" default="main" basedir=".">
-	<description>
-		Create a Java Project (JAR) with Ant build script
-	</description>
+    <description>Build the T24 Jar package</description>
 
-	<property name="projectName" value="T24 CI" />
+    <property name="projectName" value="T24 CI" />
+    <property name="build.dir" location="build" />
+    <property name="version" value="1.0" />
     
-    <property file="config.properties"/>
+   <property file="config.properties"/>
 
-	<target name="compile" description="compile the source ">
-		<echo message="Compiling the source code(s)..."/>
-	    <echo message="TAFJ Home Path : ${tafj.home.path}" />
-	    <exec dir="${tafj.home.path}" executable="cmd" failonerror="true">
-	            <arg line="/c tcompile.bat ${basedir}"/> 
-	     </exec>
-	</target>
-    
-    <target name="test" depends="compile" description="Run the UnitTests ">
+   <target name="compile" description="compile the source ">
+	<echo message="Compiling the source code(s)..."/>
+	<echo message="TAFJ Home Path : ${tafj.home.path}" />
+	<exec dir="${tafj.home.path}" executable="cmd" failonerror="true">
+	    <arg line="/c tcompile.bat ${basedir}"/> 
+	</exec>
+   </target>
+	
+   <target name="build" description="Generate the Build">
+	<echo message="Building the Jar file..."/>
+	<buildnumber />
+	<!-- Create the build directory -->
+	<mkdir dir="${build.dir}" />
+	<mkdir dir="${build.dir}/lib" />
+	<mkdir dir="${build.dir}/classes" />
+	<!-- "${build.dir}/lib/Maveric-${version}.${build.number}.jar -->
+	<jar destfile = "${build.dir}/lib/Maveric-${version}.jar"
+		basedir = "${build.dir}/classes"
+		excludes = "**/test*.class"/> 
+    </target>
+	
+    <target name="test" description="Run the UnitTests ">
 	    <echo message="Starting to run the T24 Unit Tests..."/>
         <exec dir="${tafj.home.path}" executable="cmd" failonerror="true">
             <arg line="/c trun.bat -test -recurs ${basedir}\ST_Customer\Test\UnitTests"/>
         </exec>
     </target>
-
-	<!-- Default, run this -->
-	<!-- <target name="main" depends="compile, test" /> -->
 </project>
