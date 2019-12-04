@@ -2,7 +2,7 @@
     <description>Build the T24 Jar package</description>
 
     <property name="projectName" value="T24 CI" />
-    <property name="build.dir" location="build" />
+    <property name="build.dir" location="${basedir}/build" />
     <property name="version" value="1.0" />
     
    <property file="config.properties"/>
