@@ -103,7 +103,7 @@ testOtherSectors:
     
     RESULT = UTF.runTest()
 
-    UTF.assertNotEquals(NEW.LANG, "PL")
+    UTF.assertNotEquals(NEW.LANG, "ES")
     PRINT "Completed Test for Other Sectors"
     
     RETURN
