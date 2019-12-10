@@ -82,7 +82,7 @@ testSector1003:
     
     RESULT = UTF.runTest()
 
-    UTF.assertEquals(NEW.LANG, "PL")
+    UTF.assertEquals(NEW.LANG, "ES")
     PRINT "Completed Test for Sector 1003"
 
     RETURN
