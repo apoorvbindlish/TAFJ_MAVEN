@@ -9,17 +9,17 @@
 
 	<target name="compile" description="compile the source ">
 		<echo message="Compiling the source code(s)..."/>
-	    <echo message="TAFJ Home Path : ${tafj.home.path}" />
-	    <exec dir="${tafj.home.path}" executable="cmd" os="Windows 10" failonerror="true">
-	            <arg line="/c tcompile.bat ${basedir}"/> 
+	    <echo message="TAFJ Home Path : $tafj_home_path" />
+	    <exec dir="$tafj_home_path" executable="sh" os="Linux" failonerror="true">
+	            <arg line="/c tcompile.sh ${basedir}"/> 
 	     </exec>
 	</target>
     
     <target name="run" depends="compile" description="Run the UnitTests">
 	    <echo message="Starting to run the T24 Unit Tests..."/>
-        <exec dir="${tafj.home.path}" executable="cmd" os="Windows 10" 
+        <exec dir="$tafj_home_path" executable="sh" os="Linux" 
             failonerror="true" logerror="true">
-            <arg line="/c trun.bat -test ${basedir}\Test\UnitTests"/>
+            <arg line="/c trun.sh -test ${basedir}/Test/UnitTests"/>
         </exec>
     </target>
 
