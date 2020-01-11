@@ -31,7 +31,7 @@
     <target name="test" description="Run the UnitTests ">
 	    <echo message="Starting to run the T24 Unit Tests..."/>
         <exec dir="$tafj_home_path" executable="sh" failonerror="true">
-            <arg line="/c trun.sh -test -recurs ${basedir}\ST_Customer\Test\UnitTests"/>
+            <arg line="/c trun.sh -test -recurs ${basedir}/ST_Customer/Test/UnitTests"/>
         </exec>
     </target>
 </project>
